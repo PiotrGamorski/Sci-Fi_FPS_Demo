@@ -20,7 +20,9 @@ public class LookX : MonoBehaviour
         newRotation.y = newRotation.y + (mouseX * sensivity);
         this.transform.localEulerAngles = newRotation;
 
+        #region Alternative Approach
         //this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y + mouseX, this.transform.eulerAngles.z);
         //this.transform.rotation = Quaternion.Euler(this.transform.eulerAngles.x, this.transform.eulerAngles.y + mouseX, this.transform.eulerAngles.z);
+        #endregion
     }
 }

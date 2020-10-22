@@ -22,13 +22,19 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 centerPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            #region Alternative RayCast Approach
+            //Vector3 centerPoint = new Vector3(Screen.width / 2, Screen.height / 2, 0);
             //Vector3 centerPoint = Input.mousePosition;
-            Ray rayOrigin = Camera.main.ScreenPointToRay(centerPoint);
+            //Ray rayOrigin = Camera.main.ScreenPointToRay(centerPoint);
+            #endregion
 
-            if (Physics.Raycast(rayOrigin, Mathf.Infinity))
+            Vector3 centerPoint = new Vector3(0.5f, 0.5f, 0);
+            Ray rayOrigin = Camera.main.ViewportPointToRay(centerPoint);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(rayOrigin, out hitInfo, Mathf.Infinity))
             {
-                Debug.Log("RayCast hits something");
+                Debug.Log("Hit: " + hitInfo.transform.name);
             }
         }
 
